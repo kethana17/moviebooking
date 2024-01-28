@@ -1,0 +1,32 @@
+<p>user-registration works!</p>
+<!-- user-registration.component.html -->
+<div class="container col-lg-3" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); padding: 20px; margin-top: 50px;">
+  <h2 style="text-align: center;"> Register Here</h2>
+  <form [formGroup]="userRegistrationForm" (ngSubmit)="registerUser()" style="margin-top: 20px;">
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+      <input type="text" id="username" formControlName="username" class="form-control" required>
+      <span style="color:red" *ngIf="userRegistrationForm?.get('username')?.touched && userRegistrationForm?.get('username')?.invalid">
+        User Name is required
+    </span>
+  </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control" required email>
+      <span style="color:red" *ngIf="userRegistrationForm?.get('email')?.touched && userRegistrationForm?.get('email')?.invalid">Email is required</span>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control" required minlength="6">
+      <span style="color:red" *ngIf="userRegistrationForm?.get('password')?.touched && userRegistrationForm?.get('password')?.invalid">Password is required</span>
+    </div>
+    
+    <div class="d-flex justify-content-center mt-auto">
+      <button type="submit" [disabled]="userRegistrationForm!.invalid">Register</button>
+      
+
+    </div>
+
+  </form>
+</div>

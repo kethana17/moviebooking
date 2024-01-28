@@ -1,0 +1,38 @@
+<!-- user-movies.component.html -->
+
+
+<div class="container">
+    <h2 class="text-center">NowPlaying</h2>
+
+    <div class="row">
+      <div *ngFor="let movie of movies" class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnxxypPJIwYt-QIOqitQg-7PrklWlvPIUDU0s6GhHhqQ&s" class="card-img-top" alt="Custom Size Image" style="width: 150px; height: 200px;">
+  
+            <h3 class="card-title">{{ movie.title }}</h3>
+            <p class="card-text"><strong>Genre:</strong> {{ movie.genre }}</p>
+            <p class="card-text"><strong>Director:</strong> {{ movie.director }}</p>
+            <p class="card-text"><strong>Duration:</strong> {{ movie.duration }} minutes</p>
+            <p class="card-text"><strong>Rating:</strong> {{ movie.rating }}/10</p>
+    
+            <!-- Toggle Button for Show Details -->
+            <button class="btn btn-primary" (click)="showVisible = !showVisible">Shows</button>
+    
+            <!-- Display Shows -->
+            <div *ngIf="showVisible">
+              <div *ngFor="let show of getShowsForMovie(movie)" class="show-details">
+                <div style="border-radius: 10px; background-color: aqua;">
+                  <p><strong>Theatre:</strong> {{ show.theatreName }}</p>
+                  <p><strong>Show Name:</strong> {{ show.showName }}</p>
+                  <p><strong>Show Date Time:</strong> {{ show.showDateTime }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
